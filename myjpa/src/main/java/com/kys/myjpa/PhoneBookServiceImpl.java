@@ -63,6 +63,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     public boolean remove(Long id) {
         IPhoneBook find = this.findById(id);
         if ( find != null ) {
+            this.phoneBookJpaRepository.deleteById(id);
             return true;
         }
         return false;
@@ -71,7 +72,15 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     @Override
     public IPhoneBook update(Long id, IPhoneBook phoneBook) {
         IPhoneBook find = this.findById(id);
-        return null;
+        if (find == null) {
+            return null;
+        }
+        find.copyFields(phoneBook);
+        return this.phoneBookJpaRepository.saveAndFlush((PhoneBookEntity)find);
+//        PhoneBookEntity entity = new PhoneBookEntity();
+//        entity.copyFields(find);
+//        IPhoneBook result = this.phoneBookJpaRepository.saveAndFlush(entity);
+//        return result;
     }
 
     @Override
