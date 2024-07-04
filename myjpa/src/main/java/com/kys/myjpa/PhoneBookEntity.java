@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="phonebook")
+@Table(schema="phonebook_tbl")
 public class PhoneBookEntity implements IPhoneBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
