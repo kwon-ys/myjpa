@@ -5,10 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,13 +19,29 @@ public class PhoneBookController {
     @Autowired
     private IPhoneBookService<IPhoneBook> phoneBookService;
 
+    private boolean isValidInsert(IPhoneBook dto) {
+        if (dto == null) {
+            return false;
+        }
+        else if (dto.getName() == null || dto.getName().isEmpty()){
+            return false;
+        }
+        else if (dto.getCategory() == null || dto.getCategory().isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
     @PostMapping
-    public ResponseEntity<IPhoneBook> insertPB(PhoneBookDto dto) {
+    public ResponseEntity<IPhoneBook> insertPB(@RequestBody PhoneBookDto dto) {
         try {
             if (dto == null) {
                 return ResponseEntity.badRequest().build();
             }
             IPhoneBook result = this.phoneBookService.insert(dto);
+            if (result == null) {
+                return ResponseEntity.badRequest().build();
+            }
             return ResponseEntity.ok(result);
         } catch (Exception ex) {
             logger.error(ex.toString());
@@ -40,6 +53,34 @@ public class PhoneBookController {
     public ResponseEntity<List<IPhoneBook>> getAll(){
         try {
             List<IPhoneBook> result = this.phoneBookService.getAllList();
+            return ResponseEntity.ok(result);
+        } catch (Exception ex) {
+            logger.error(ex.toString());
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<Boolean> delete(@PathVariable Long id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            Boolean result = this.phoneBookService.remove(id);
+            return ResponseEntity.ok(result);
+        } catch (Exception ex) {
+            logger.error(ex.toString());
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<IPhoneBook> update(@PathVariable Long id, @RequestBody PhoneBookRequest dto) {
+        try {
+            if (id == null || dto == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            IPhoneBook result = this.phoneBookService.update(id, dto);
             return ResponseEntity.ok(result);
         } catch (Exception ex) {
             logger.error(ex.toString());
