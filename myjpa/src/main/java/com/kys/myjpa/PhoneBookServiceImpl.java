@@ -76,6 +76,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
             return null;
         }
         find.copyFields(phoneBook);
+
         return this.phoneBookJpaRepository.saveAndFlush((PhoneBookEntity)find);
 //        PhoneBookEntity entity = new PhoneBookEntity();
 //        entity.copyFields(find);
