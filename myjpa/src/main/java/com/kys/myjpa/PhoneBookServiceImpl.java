@@ -62,11 +62,11 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     @Override
     public boolean remove(Long id) {
         IPhoneBook find = this.findById(id);
-        if ( find != null ) {
-            this.phoneBookJpaRepository.deleteById(id);
-            return true;
+        if (find == null) {
+            return false;
         }
-        return false;
+        this.phoneBookJpaRepository.deleteById(id);
+        return true;
     }
 
     @Override
