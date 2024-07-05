@@ -89,7 +89,12 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (findName == null || findName.isEmpty()) {
             return new ArrayList<>();
         }
-        return new ArrayList<>();
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByNameContains(findName);
+        List<IPhoneBook> result = new ArrayList<>();
+        for (PhoneBookEntity item : list) {
+            result.add((IPhoneBook) item);
+        }
+        return result;
     }
 
     @Override
@@ -97,23 +102,38 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (category == null) {
             return new ArrayList<>();
         }
-        return new ArrayList<>();
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategoryContains(category);
+        List<IPhoneBook> result = new ArrayList<>();
+        for (PhoneBookEntity item : list) {
+            result.add((IPhoneBook) item);
+        }
+        return result;
     }
 
     @Override
     public List<IPhoneBook> getListFromPhoneNumber(String findPhone) {
-        if (findPhone == null || findPhone.isEmpty()) {
+        if (findPhone == null) {
             return new ArrayList<>();
         }
-        return new ArrayList<>();
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByPhoneNumberContains(findPhone);
+        List<IPhoneBook> result = new ArrayList<>();
+        for (PhoneBookEntity item : list) {
+            result.add((IPhoneBook) item);
+        }
+        return result;
     }
 
     @Override
     public List<IPhoneBook> getListFromEmail(String findEmail) {
-        if (findEmail == null || findEmail.isEmpty()) {
+        if (findEmail == null) {
             return new ArrayList<>();
         }
-        return new ArrayList<>();
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByEmailContains(findEmail);
+        List<IPhoneBook> result = new ArrayList<>();
+        for (PhoneBookEntity item : list) {
+            result.add((IPhoneBook) item);
+        }
+        return result;
     }
 
 }
