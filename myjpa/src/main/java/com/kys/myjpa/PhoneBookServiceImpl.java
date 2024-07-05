@@ -102,7 +102,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (category == null || category.isEmpty()) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategoryContains(String.valueOf(category));
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategoryContains(category);
         List<IPhoneBook> result = list.stream()
                 .map(x -> (IPhoneBook)x)
                 .toList();
