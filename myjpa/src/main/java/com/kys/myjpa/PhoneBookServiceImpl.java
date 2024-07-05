@@ -98,41 +98,38 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     }
 
     @Override
-    public List<IPhoneBook> getListFromGroup(ECategory category) {
-        if (category == null) {
+    public List<IPhoneBook> getListFromGroup(String category) {
+        if (category == null || category.isEmpty()) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategoryContains(category);
-        List<IPhoneBook> result = new ArrayList<>();
-        for (PhoneBookEntity item : list) {
-            result.add((IPhoneBook) item);
-        }
+        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategoryContains(String.valueOf(category));
+        List<IPhoneBook> result = list.stream()
+                .map(x -> (IPhoneBook)x)
+                .toList();
         return result;
     }
 
     @Override
     public List<IPhoneBook> getListFromPhoneNumber(String findPhone) {
-        if (findPhone == null) {
+        if (findPhone == null || findPhone.isEmpty()) {
             return new ArrayList<>();
         }
         List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByPhoneNumberContains(findPhone);
-        List<IPhoneBook> result = new ArrayList<>();
-        for (PhoneBookEntity item : list) {
-            result.add((IPhoneBook) item);
-        }
+        List<IPhoneBook> result = list.stream()
+                .map(item -> (IPhoneBook)item)
+                .toList();
         return result;
     }
 
     @Override
     public List<IPhoneBook> getListFromEmail(String findEmail) {
-        if (findEmail == null) {
+        if (findEmail == null || findEmail.isEmpty()) {
             return new ArrayList<>();
         }
         List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByEmailContains(findEmail);
-        List<IPhoneBook> result = new ArrayList<>();
-        for (PhoneBookEntity item : list) {
-            result.add((IPhoneBook) item);
-        }
+        List<IPhoneBook> result = list.stream()
+                .map(node -> (IPhoneBook)node)
+                .toList();
         return result;
     }
 

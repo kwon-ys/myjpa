@@ -126,7 +126,7 @@ public class PhoneBookController {
     }
 
     @GetMapping("/cg/{category}")
-    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable ECategory category) {
+    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable String category) {
         try {
             if (category == null) {
                 return ResponseEntity.badRequest().build();

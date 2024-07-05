@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PhoneBookJpaRepository extends JpaRepository<PhoneBookEntity, Long> {
     List<PhoneBookEntity> findAllByNameContains(String name);
-    List<PhoneBookEntity> findAllByCategoryContains(ECategory category);
+    List<PhoneBookEntity> findAllByCategoryContains(String category);
     List<PhoneBookEntity> findAllByPhoneNumberContains(String findPhone);
     List<PhoneBookEntity> findAllByEmailContains(String findEmail);
 }
