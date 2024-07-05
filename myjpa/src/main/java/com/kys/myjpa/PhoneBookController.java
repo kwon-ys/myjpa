@@ -126,12 +126,12 @@ public class PhoneBookController {
     }
 
     @GetMapping("/cg/{category}")
-    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable Integer category) {
+    public ResponseEntity<List<IPhoneBook>> findAllByCategory(@PathVariable Integer category) {
         try {
             if (category == null) {
                 return ResponseEntity.badRequest().build();
             }
-            List<IPhoneBook> result = this.phoneBookService.getListFromGroup(ECategory.integerOf(category));
+            List<IPhoneBook> result = this.phoneBookService.getListFromCategory(ECategory.integerOf(category));
             if (result == null || result.size() <=0) {
                 return ResponseEntity.notFound().build();
             }

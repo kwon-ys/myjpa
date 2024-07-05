@@ -98,7 +98,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     }
 
     @Override
-    public List<IPhoneBook> getListFromGroup(ECategory category) {
+    public List<IPhoneBook> getListFromCategory(ECategory category) {
         if (category == null) {
             return new ArrayList<>();
         }
