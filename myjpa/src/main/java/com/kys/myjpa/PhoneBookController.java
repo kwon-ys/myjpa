@@ -26,7 +26,7 @@ public class PhoneBookController {
         else if (dto.getName() == null || dto.getName().isEmpty()){
             return false;
         }
-        else if (dto.getCategory() == null || dto.getCategory().isEmpty()){
+        else if (dto.getCategory() == null){
             return false;
         }
         return true;
@@ -126,12 +126,12 @@ public class PhoneBookController {
     }
 
     @GetMapping("/cg/{category}")
-    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable String category) {
+    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable Integer category) {
         try {
             if (category == null) {
                 return ResponseEntity.badRequest().build();
             }
-            List<IPhoneBook> result = this.phoneBookService.getListFromGroup(category);
+            List<IPhoneBook> result = this.phoneBookService.getListFromGroup(ECategory.integerOf(category));
             if (result == null || result.size() <=0) {
                 return ResponseEntity.notFound().build();
             }
