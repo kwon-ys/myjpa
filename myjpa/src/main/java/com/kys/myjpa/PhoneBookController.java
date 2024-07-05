@@ -81,6 +81,9 @@ public class PhoneBookController {
                 return ResponseEntity.badRequest().build();
             }
             IPhoneBook result = this.phoneBookService.update(id, dto);
+            if (result == null) {
+                return ResponseEntity.notFound().build();
+            }
             return ResponseEntity.ok(result);
         } catch (Exception ex) {
             logger.error(ex.toString());
