@@ -1,4 +1,4 @@
-package com.kys.myjpa.cate;
+package com.kys.myjpa.icate;
 
 public class CategoryController {
 }

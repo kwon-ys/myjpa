@@ -1,4 +1,4 @@
-package com.kys.myjpa.cate;
+package com.kys.myjpa.icate;
 
 import com.kys.myjpa.ECategory;
 import com.kys.myjpa.IPhoneBook;
