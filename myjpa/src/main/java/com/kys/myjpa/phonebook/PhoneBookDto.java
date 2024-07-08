@@ -1,7 +1,5 @@
-package com.kys.myjpa;
+package com.kys.myjpa.phonebook;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -9,26 +7,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="phonebook_tbl")
-public class PhoneBookEntity implements IPhoneBook {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PhoneBookDto implements IPhoneBook {
     private Long id;
-
-    @NotNull
-    @Column(length = 50, unique = true)
     private String name;
-
-    @NotNull
     private ECategory category;
-
-    @NotNull
-    @Column(length = 20)
     private String phoneNumber;
-
-    @NotNull
-    @Column(length = 200)
     private String email;
 
     @Override

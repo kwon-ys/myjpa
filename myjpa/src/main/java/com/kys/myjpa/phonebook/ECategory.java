@@ -1,4 +1,4 @@
-package com.kys.myjpa;
+package com.kys.myjpa.phonebook;
 
 public enum ECategory {
     Friends(0),

@@ -1,6 +1,5 @@
-package com.kys.myjpa.icate;
+package com.kys.myjpa.category;
 
-import com.kys.myjpa.ECategory;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -18,11 +17,7 @@ public class CategoryEntity implements ICategory {
     private Long id;
 
     @NotNull
-    private ECategory category;
+    @Column(length = 20, unique = true)
+    private String name;
 
-    @Override
-    public String toString(){
-        return String.format("ID:%6d, 분류:%s}",
-                this.id, this.category);
-    }
 }

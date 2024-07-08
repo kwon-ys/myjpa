@@ -1,4 +1,4 @@
-package com.kys.myjpa;
+package com.kys.myjpa.phonebook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

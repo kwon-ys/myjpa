@@ -1,10 +1,11 @@
-package com.kys.myjpa.icate;
+package com.kys.myjpa.category;
 
-import com.kys.myjpa.ECategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryJpaRepository extends JpaRepository<CategoryEntity, Long> {
-    List<CategoryEntity> findAllByCategory(ECategory category);
+    Optional<CategoryEntity> findByName(String name);
+    List<CategoryEntity> findAllByNameContains(String nm);
 }

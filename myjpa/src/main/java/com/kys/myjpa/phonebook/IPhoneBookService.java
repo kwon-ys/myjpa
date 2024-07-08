@@ -1,4 +1,4 @@
-package com.kys.myjpa;
+package com.kys.myjpa.phonebook;
 
 import java.util.List;
 
