@@ -1,7 +1,5 @@
 package com.kys.myjpa.category;
 
-import com.kys.myjpa.phonebook.IPhoneBook;
-
 public interface ICategory {
     Long getId();
     void setId(Long id);

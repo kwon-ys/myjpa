@@ -1,8 +1,5 @@
 package com.kys.myjpa.category;
 
-import com.kys.myjpa.phonebook.ECategory;
-import com.kys.myjpa.phonebook.IPhoneBook;
-import com.kys.myjpa.phonebook.PhoneBookEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
