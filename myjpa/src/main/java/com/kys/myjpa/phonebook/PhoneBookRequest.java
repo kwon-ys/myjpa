@@ -1,14 +1,15 @@
 package com.kys.myjpa.phonebook;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kys.myjpa.category.CategoryEntity;
 import com.kys.myjpa.category.ICategory;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
 public class PhoneBookRequest implements IPhoneBook {
     @JsonIgnore
     private Long id;
@@ -18,13 +19,22 @@ public class PhoneBookRequest implements IPhoneBook {
     private String name;
 
     @NotBlank
-    private ICategory category;
+    private CategoryEntity category;
 
     @NotBlank
     @Size(min = 0, max = 20)
     private String phoneNumber;
 
-    @NotBlank
     @Size(min = 0, max = 200)
     private String email;
+
+    @Override
+    public void setCategory(ICategory category) {
+        if (category == null) {
+            return;
+        }
+        CategoryEntity entity = new CategoryEntity();
+        entity.copyFields(category);
+        this.category = entity;
+    }
 }

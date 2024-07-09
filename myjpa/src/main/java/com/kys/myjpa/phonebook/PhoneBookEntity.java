@@ -1,6 +1,5 @@
 package com.kys.myjpa.phonebook;
 
-import ch.qos.logback.core.joran.conditional.IfAction;
 import com.kys.myjpa.category.CategoryEntity;
 import com.kys.myjpa.category.ICategory;
 import jakarta.persistence.*;

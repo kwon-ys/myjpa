@@ -1,6 +1,7 @@
 package com.kys.myjpa.phonebook;
 
 import com.kys.myjpa.category.CategoryEntity;
+import com.kys.myjpa.category.CategoryJpaRepository;
 import com.kys.myjpa.category.ICategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,9 @@ import java.util.*;
 public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     @Autowired
     private PhoneBookJpaRepository phoneBookJpaRepository;
+
+//    @Autowired
+//    private CategoryJpaRepository categoryJpaRepository;
 
     @Override
     public IPhoneBook findById(Long id) {
@@ -47,7 +51,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
             return false;
         }
         else if (dto.getCategory() == null){
-            return false;
+            // return false;
         }
         return true;
     }

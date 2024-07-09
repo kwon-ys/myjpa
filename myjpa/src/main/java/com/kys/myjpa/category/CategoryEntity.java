@@ -19,5 +19,4 @@ public class CategoryEntity implements ICategory {
     @NotNull
     @Column(length = 20, unique = true)
     private String name;
-
 }

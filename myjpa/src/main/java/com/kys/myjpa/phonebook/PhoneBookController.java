@@ -1,8 +1,8 @@
 package com.kys.myjpa.phonebook;
 
-import com.kys.myjpa.category.CategoryDto;
 import com.kys.myjpa.category.CategoryEntity;
 import com.kys.myjpa.category.ICategory;
+import com.kys.myjpa.category.ICategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +22,8 @@ public class PhoneBookController {
     @Autowired
     private IPhoneBookService<IPhoneBook> phoneBookService;
 
+//    private ICategoryService iCategoryService;
+
     private boolean isValidInsert(IPhoneBook dto) {
         if (dto == null) {
             return false;
@@ -36,7 +38,7 @@ public class PhoneBookController {
     }
 
     @PostMapping
-    public ResponseEntity<IPhoneBook> insertPB(@RequestBody PhoneBookDto dto) {
+    public ResponseEntity<IPhoneBook> insert(@RequestBody PhoneBookRequest dto) {
         try {
             if (dto == null) {
                 return ResponseEntity.badRequest().build();
