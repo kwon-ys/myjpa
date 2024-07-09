@@ -1,6 +1,7 @@
 package com.kys.myjpa.phonebook;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kys.myjpa.category.ICategory;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -17,7 +18,7 @@ public class PhoneBookRequest implements IPhoneBook {
     private String name;
 
     @NotBlank
-    private ECategory category;
+    private ICategory category;
 
     @NotBlank
     @Size(min = 0, max = 20)
