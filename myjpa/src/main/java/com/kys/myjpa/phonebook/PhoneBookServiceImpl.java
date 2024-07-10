@@ -51,7 +51,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
             return false;
         }
         else if (dto.getCategory() == null){
-            // return false;
+             return false;
         }
         return true;
     }

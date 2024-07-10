@@ -1,8 +1,6 @@
 package com.kys.myjpa.phonebook;
 
 import com.kys.myjpa.category.CategoryEntity;
-import com.kys.myjpa.category.ICategory;
-import com.kys.myjpa.category.ICategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name="category_tbl")
 public class CategoryEntity implements ICategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotNull
